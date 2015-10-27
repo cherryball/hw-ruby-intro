@@ -32,11 +32,7 @@ def sum_to_n? arr, n
     return false
   else
     arr.each do |x|
-      arr.each { |y| 
-   #      if x != y && x + y == n
-    #     puts "#{x} + #{y} = #{total}"
-         return true if x != y && x + y == n
-       }
+      arr.each { |y| return true if x != y && x + y == n }
     end
   end
   return false
@@ -46,14 +42,19 @@ end
 
 def hello(name)
   # YOUR CODE HERE
+  return "Hello, #{name}"
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  return false if s.to_s.length == 0
+  return false if s[0,1] =~ /[^a-z|A-Z]/
+  consonant = ["a", "e", "i", "o", "u"]
+  return !consonant.include?(s[0,1].downcase)
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  return false if s.to_s.length == 0 || s =~ /[^0|1]/ 
+  return s.to_i(2) % 4 == 0
 end
 
 # Part 3
@@ -71,4 +72,11 @@ puts total
 puts "sum_to_n? test"
 arr = [-1,-2,3,4,6,-8]
 puts sum_to_n? arr, 12
+
+puts hello("Dan")
+
+
+puts "==========="
+puts starts_with_consonant?("#a")
+
 =end
