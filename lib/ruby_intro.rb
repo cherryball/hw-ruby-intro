@@ -60,23 +60,30 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+
+   attr_accessor :isbn, :price
+   
+   def initialize(isbn, price)
+     raise ArgumentError, 'ISBN cannot be empty' if isbn.to_s.length == 0
+     raise ArgumentError, 'Price larger than 0' if price.to_f <= 0
+     @isbn = isbn
+     @price = price
+   end
+   
+   def isbn=(isbn)
+      @isbn = isbn
+   end
+  
+   def isbn
+     @isbn
+   end  
+   
+   def price=(price)
+      @price = price
+   end
+  
+   def price_as_string
+      "$#{'%.2f' % @price}"
+   end  
+   
 end
-
-=begin
-arr = [5, 7, 3, 4, 5]
-total = max_2_sum(arr)
-puts total
-
-
-puts "sum_to_n? test"
-arr = [-1,-2,3,4,6,-8]
-puts sum_to_n? arr, 12
-
-puts hello("Dan")
-
-
-puts "==========="
-puts starts_with_consonant?("#a")
-
-=end
